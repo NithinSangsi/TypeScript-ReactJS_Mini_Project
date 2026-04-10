@@ -1,4 +1,4 @@
-# 📝 Let's DO - Todo Application
+# 📝 Let's DO 
 
 A modern, feature-rich todo application built with **React** and **TypeScript**, featuring a beautiful UI with gradient color schemes and smooth animations.
 
