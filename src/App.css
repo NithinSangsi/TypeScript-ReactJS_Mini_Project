@@ -1,0 +1,341 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Todo Container */
+.todo-container {
+  width: 100%;
+  max-width: 800px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+/* Header Section */
+.todo-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 40px 30px;
+  text-align: center;
+}
+
+.todo-header h1 {
+  font-size: 3em;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  animation: fadeInDown 0.6s ease;
+}
+
+.subtitle {
+  font-size: 1em;
+  opacity: 0.95;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* Input Section */
+.input-section {
+  padding: 30px;
+  background: linear-gradient(to bottom, #f8f9fa, #fff);
+  border-bottom: 2px solid #e9ecef;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-section input,
+.input-section textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.input-section input:focus,
+.input-section textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  background: #fafbff;
+}
+
+.input-section textarea {
+  resize: vertical;
+  min-height: 80px;
+  max-height: 150px;
+}
+
+.add-button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.add-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.add-button:active {
+  transform: translateY(0);
+}
+
+/* Items Section */
+.items-section {
+  padding: 20px;
+  background: white;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.items-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.items-section::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.items-section::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 10px;
+}
+
+.items-section::-webkit-scrollbar-thumb:hover {
+  background: #764ba2;
+}
+
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 50px 30px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  border-radius: 15px;
+  border: 2px dashed #e0e0e0;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  color: #999;
+  font-weight: 500;
+}
+
+/* Todo Item */
+.todo-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 16px;
+  background: linear-gradient(to right, #f8f9fa 0%, #ffffff 100%);
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  animation: slideIn 0.4s ease;
+}
+
+.todo-item:hover {
+  border-color: #667eea;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+  transform: translateX(5px);
+}
+
+.todo-item.completed {
+  background: linear-gradient(to right, #f0f7ff 0%, #f5f5f5 100%);
+  border-color: #c8e6c9;
+}
+
+.todo-item.completed .item-title {
+  text-decoration: line-through;
+  color: #9e9e9e;
+}
+
+.todo-item.completed .item-description {
+  color: #b0bec5;
+}
+
+/* Checkbox */
+.item-checkbox {
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.checkbox-input {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  accent-color: #667eea;
+}
+
+/* Item Content */
+.item-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-title {
+  font-size: 1.1rem;
+  color: #2c3e50;
+  margin-bottom: 5px;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+.item-description {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 10px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.85rem;
+}
+
+.item-date {
+  color: #7986cb;
+  font-weight: 500;
+}
+
+.item-status {
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.pending-status {
+  background: linear-gradient(135deg, #ffe0b2 0%, #ffcc80 100%);
+  color: #e65100;
+}
+
+.completed-status {
+  background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
+  color: #2e7d32;
+}
+
+/* Delete Button */
+.delete-button {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 6px 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  opacity: 0.7;
+}
+
+.delete-button:hover {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.delete-button:active {
+  transform: scale(0.95);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .todo-container {
+    border-radius: 15px;
+  }
+
+  .todo-header h1 {
+    font-size: 2em;
+    margin-bottom: 8px;
+  }
+
+  .input-section {
+    padding: 20px;
+  }
+
+  .items-section {
+    padding: 15px;
+    max-height: 500px;
+  }
+
+  .todo-item {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .item-meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .delete-button {
+    align-self: flex-end;
+    margin-top: 8px;
+  }
+}
